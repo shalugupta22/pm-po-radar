@@ -1,0 +1,38 @@
+name: pm-po-radar
+
+on:
+  schedule:
+    - cron: "0 12,20 * * *"    # every 4h (UTC) = ~180 calls/mo, fits JSearch free 200/mo cap.
+                              # Hourly (0 * * * *) = ~720/mo and will blow the free quota.
+  workflow_dispatch: {}       # lets you run it manually from the Actions tab
+
+permissions:
+  contents: write             # needed to commit refreshed data back to the repo
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install -r requirements.txt
+
+      - name: Run radar
+        env:
+          RAPIDAPI_KEY:       ${{ secrets.RAPIDAPI_KEY }}
+          SLACK_WEBHOOK_URL:  ${{ secrets.SLACK_WEBHOOK_URL }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID:   ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python radar.py
+
+      - name: Commit refreshed data
+        run: |
+          git config user.name  "pm-po-radar"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/jobs.json data/seen.json
+          git commit -m "radar: update $(date -u +%FT%TZ)" || echo "no changes"
+          git push

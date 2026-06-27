@@ -1,0 +1,86 @@
+[
+  {
+    "ats": "jsearch",
+    "query": "senior product manager OR AI product manager OR product manager OR product owner in Bengaluru, India",
+    "country": "in",
+    "date_posted": "3days",
+    "name": "Boards via Google-for-Jobs (LinkedIn/Indeed/Glassdoor/Naukri)"
+  },
+  {
+    "ats": "workday",
+    "tenant": "adobe",
+    "wd": "wd5",
+    "site": "external_experienced",
+    "name": "Adobe"
+  },
+  {
+    "ats": "workday",
+    "tenant": "autodesk",
+    "wd": "wd1",
+    "site": "Ext",
+    "name": "Autodesk"
+  },
+  {
+    "ats": "workday",
+    "tenant": "db",
+    "wd": "wd3",
+    "site": "DBWebsite",
+    "name": "Deutsche Bank"
+  },
+  {
+    "ats": "workday",
+    "tenant": "thomsonreuters",
+    "wd": "wd5",
+    "site": "External_Career_Site",
+    "name": "Thomson Reuters"
+  },
+  {
+    "ats": "workday",
+    "tenant": "gehc",
+    "wd": "wd5",
+    "site": "GEHC_ExternalSite",
+    "name": "GE HealthCare"
+  },
+  {
+    "ats": "workday",
+    "tenant": "spgi",
+    "wd": "wd5",
+    "site": "SPGI_Careers",
+    "name": "S&P Global"
+  },
+  {
+    "ats": "workday",
+    "tenant": "philips",
+    "wd": "wd3",
+    "site": "jobs-and-careers",
+    "name": "Philips"
+  },
+  {
+    "ats": "workday",
+    "tenant": "wexinc",
+    "wd": "wd5",
+    "site": "WEXInc",
+    "name": "WEX"
+  },
+  {
+    "ats": "greenhouse",
+    "slug": "twilio",
+    "name": "Twilio"
+  },
+  {
+    "ats": "greenhouse",
+    "slug": "samsara",
+    "name": "Samsara"
+  },
+  {
+    "ats": "greenhouse",
+    "slug": "purestorage",
+    "name": "Pure Storage"
+  },
+  {
+    "ats": "eightfold",
+    "company": "aexp",
+    "domain": "aexp.com",
+    "name": "American Express"
+  }
+]
