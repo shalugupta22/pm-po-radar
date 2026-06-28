@@ -26,8 +26,18 @@ except Exception:
 
 BASE = pathlib.Path(__file__).parent
 JOBS = BASE / "data" / "jobs.json"
-RESUME_PATH = BASE / "resume.md"
-RESUME = RESUME_PATH.read_text(encoding="utf-8") if RESUME_PATH.exists() else ""
+
+def _load_resume(name):
+    p = BASE / name
+    return p.read_text(encoding="utf-8") if p.exists() else ""
+
+RESUMES = {
+    "Senior Product Manager": _load_resume("resume_pm.md"),
+    "Senior Product Owner":   _load_resume("resume_po.md"),
+}
+# Use the PM resume for the on-screen match scoring (broader keyword coverage);
+# generation can still use either profile via the buttons below.
+RESUME = RESUMES["Senior Product Manager"] or RESUMES["Senior Product Owner"]
 
 st.set_page_config(page_title="PM/PO Job Radar", page_icon="🎯", layout="wide")
 st.title("🎯 PM / PO Job Radar — Bengaluru")
@@ -209,33 +219,91 @@ else:
             st.markdown("**⚠️ Missing keywords (gaps in your resume)**")
             st.write(", ".join(job.get("_missing", [])) or "—")
 
+        # --- JD availability badge -------------------------------------------------
+        has_desc = bool((job.get("desc") or "").strip())
+        if has_desc:
+            st.success(f"✅ Full JD available ({len(job['desc'])} chars) — deep tailoring possible.")
+        else:
+            if job.get("source") == "workday":
+                st.warning("⚠️ Workday listing has no JD in the feed. "
+                           "Clicking Generate will fetch the full JD on demand (one extra HTTP call, free). "
+                           "Tailoring will then be as deep as Greenhouse/Lever roles.")
+            else:
+                st.warning("⚠️ JD body not available for this source — tailoring will be "
+                           "title-only (shallow). Pick a Greenhouse/Lever/Ashby/jsearch row for deep tailoring.")
+
         strong = job["match"] >= 60
-        if not strong:
+        if not strong and has_desc:
             st.info(f"This role matches {int(job['match'])}%. The generator works best on "
                     "strong matches (≥60%) — weaker ones usually mean a real skills gap, "
                     "not just wording.")
         has_key = bool(os.getenv("ANTHROPIC_API_KEY"))
-        gen = st.button("📝 Generate ATS resume for this role",
-                        disabled=not has_key, use_container_width=True)
+        st.markdown("**Generate a tailored, ATS-friendly resume** "
+                    "(rewrites Shalu's real experience to match this JD — no fabrication):")
+        gcols = st.columns(2)
+        clicked_profile = None
+        if gcols[0].button("📝 Senior Product Manager profile",
+                           disabled=not has_key or not RESUMES["Senior Product Manager"].strip(),
+                           use_container_width=True, key=f"gen_pm_{job['id']}"):
+            clicked_profile = "Senior Product Manager"
+        if gcols[1].button("📝 Senior Product Owner profile",
+                           disabled=not has_key or not RESUMES["Senior Product Owner"].strip(),
+                           use_container_width=True, key=f"gen_po_{job['id']}"):
+            clicked_profile = "Senior Product Owner"
         if not has_key:
             st.caption("Set `ANTHROPIC_API_KEY` in secrets to enable generation.")
 
-        if gen:
+        if clicked_profile:
+            # On-demand Workday JD fetch — costs zero RapidAPI quota.
+            if not has_desc and job.get("source") == "workday" and job.get("url"):
+                with st.spinner("Fetching full JD from Workday…"):
+                    try:
+                        import requests, re as _re
+                        url = job["url"]
+                        # Workday job URL -> CXS job-details endpoint
+                        m = _re.match(r"https?://([^/]+)/([^/]+)(/job/.*)", url)
+                        if m:
+                            host, site, path = m.group(1), m.group(2), m.group(3)
+                            tenant = host.split(".")[0]
+                            cxs = f"https://{host}/wday/cxs/{tenant}/{site}{path}"
+                            ua = {"User-Agent": ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                                                 "AppleWebKit/537.36 (KHTML, like Gecko) "
+                                                 "Chrome/124.0 Safari/537.36"),
+                                  "Accept": "application/json"}
+                            r = requests.get(cxs, headers=ua, timeout=20)
+                            if r.status_code == 200:
+                                jd = r.json().get("jobPostingInfo", {}).get("jobDescription", "")
+                                jd = _re.sub(r"<[^>]+>", " ", jd or "")
+                                jd = _re.sub(r"\s+", " ", jd).strip()
+                                if jd:
+                                    job["desc"] = jd[:6000]
+                                    st.success(f"Fetched {len(jd)} chars of JD — tailoring will be deep.")
+                                else:
+                                    st.info("Workday returned no description text — tailoring will be title-only.")
+                            else:
+                                st.info(f"Workday JD fetch returned HTTP {r.status_code} — tailoring will be title-only.")
+                    except Exception as e:
+                        st.info(f"Workday JD fetch failed ({e}) — tailoring will be title-only.")
+
             from resume_gen import generate_resume
-            with st.spinner("Tailoring resume (truthfully — no fabrication)…"):
+            with st.spinner(f"Tailoring {clicked_profile} resume (truthful, no fabrication)…"):
                 try:
-                    out = generate_resume(RESUME, job, job.get("_missing", []))
-                    st.session_state[f"resume::{job['id']}"] = out
+                    base = RESUMES[clicked_profile]
+                    out = generate_resume(base, job, job.get("_missing", []),
+                                          profile=clicked_profile)
+                    st.session_state[f"resume::{job['id']}::{clicked_profile}"] = out
+                    st.session_state[f"resume_last::{job['id']}"] = clicked_profile
                 except Exception as e:
                     st.error(f"Generation failed: {e}")
 
-        saved = st.session_state.get(f"resume::{job['id']}")
+        last = st.session_state.get(f"resume_last::{job['id']}")
+        saved = st.session_state.get(f"resume::{job['id']}::{last}") if last else None
         if saved:
-            st.markdown("**Tailored resume** — review carefully before using; "
-                        "it only reorders/rephrases what's in resume.md.")
+            st.markdown(f"**Tailored resume — {last} profile.** Review before using; "
+                        "it only reorders/rephrases what's in the base resume.")
             st.text_area("Result", saved, height=400)
-            base_name = (f"resume_{job['company']}".replace(" ", "_")
-                         .replace("&", "and").replace("/", "-"))
+            base_name = (f"resume_{last.replace(' ','')}_{job['company']}"
+                         .replace(" ", "_").replace("&", "and").replace("/", "-"))
             d1, d2, d3 = st.columns(3)
             d1.download_button("⬇️ Markdown", saved, file_name=base_name + ".md",
                                use_container_width=True)

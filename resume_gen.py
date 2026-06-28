@@ -29,7 +29,7 @@ SYSTEM = (
 )
 
 
-def generate_resume(resume_text, job, missing_keywords=None):
+def generate_resume(resume_text, job, missing_keywords=None, profile=None):
     key = os.getenv("ANTHROPIC_API_KEY")
     if not key:
         raise RuntimeError("ANTHROPIC_API_KEY not set — needed to generate a tailored resume.")
@@ -37,8 +37,19 @@ def generate_resume(resume_text, job, missing_keywords=None):
 
     client = anthropic.Anthropic(api_key=key)
     miss = ", ".join((missing_keywords or [])[:25])
+    profile_note = ""
+    if profile:
+        profile_note = (
+            f"\nTARGET PROFILE: {profile}. Frame the headline, summary, and bullet emphasis to "
+            f"position the candidate for a {profile} role specifically — without changing any facts. "
+            f"For 'Senior Product Manager', emphasize product strategy, vision, roadmap ownership, "
+            f"market/customer outcomes, GTM, cross-functional leadership, and quantified business impact. "
+            f"For 'Senior Product Owner', emphasize backlog ownership, sprint/PI execution, BDD acceptance "
+            f"criteria, Agile/SAFe ceremonies, requirements engineering, and delivery discipline.\n"
+        )
     user = (
-        f"JOB: {job.get('title','')} at {job.get('company','')} ({job.get('location','')})\n\n"
+        f"JOB: {job.get('title','')} at {job.get('company','')} ({job.get('location','')})\n"
+        f"{profile_note}\n"
         f"JOB DESCRIPTION:\n{(job.get('desc') or '(no description available — use the title)')[:6000]}\n\n"
         f"KEYWORDS THE RESUME IS CURRENTLY MISSING (include ONLY where genuinely applicable, "
         f"otherwise put under 'Gaps to address'): {miss or '(none computed)'}\n\n"

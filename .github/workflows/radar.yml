@@ -2,7 +2,7 @@ name: pm-po-radar
 
 on:
   schedule:
-    - cron: "0 12,20 * * *"    # every 4h (UTC) = ~180 calls/mo, fits JSearch free 200/mo cap.
+    - cron: "0 */4 * * *"    # every 4h (UTC) = ~180 calls/mo, fits JSearch free 200/mo cap.
                               # Hourly (0 * * * *) = ~720/mo and will blow the free quota.
   workflow_dispatch: {}       # lets you run it manually from the Actions tab
 
