@@ -1,1 +1,132 @@
-[]
+[
+  {
+    "id": "wd:adobe:/job/Bangalore/Senior-Product-Manager_R169376",
+    "company": "Adobe",
+    "source": "workday",
+    "title": "Senior Product Manager (Enterprise Platform)",
+    "location": "Bangalore",
+    "url": "https://adobe.wd5.myworkdayjobs.com/external_experienced/job/Bangalore/Senior-Product-Manager_R169376",
+    "updated": "Posted 22 Days Ago",
+    "desc": ""
+  },
+  {
+    "id": "wd:adobe:/job/Bangalore/Product-Manager-3_R169439",
+    "company": "Adobe",
+    "source": "workday",
+    "title": "Internal Product Manager 3 - Sales Performance Management",
+    "location": "Bangalore",
+    "url": "https://adobe.wd5.myworkdayjobs.com/external_experienced/job/Bangalore/Product-Manager-3_R169439",
+    "updated": "Posted Today",
+    "desc": ""
+  },
+  {
+    "id": "wd:autodesk:/job/Bengaluru-IND/Senior-Product-Manager_26WD98021-2",
+    "company": "Autodesk",
+    "source": "workday",
+    "title": "Senior Product Manager",
+    "location": "Bengaluru, IND",
+    "url": "https://autodesk.wd1.myworkdayjobs.com/Ext/job/Bengaluru-IND/Senior-Product-Manager_26WD98021-2",
+    "updated": "Posted 30 Days Ago",
+    "desc": ""
+  },
+  {
+    "id": "wd:autodesk:/job/Pune-IND/Senior-Technical-Product-Manager--Search-and-AI-_26WD95938-1",
+    "company": "Autodesk",
+    "source": "workday",
+    "title": "Senior Technical Product Manager (Search and AI)",
+    "location": "Pune, IND",
+    "url": "https://autodesk.wd1.myworkdayjobs.com/Ext/job/Pune-IND/Senior-Technical-Product-Manager--Search-and-AI-_26WD95938-1",
+    "updated": "Posted 30+ Days Ago",
+    "desc": ""
+  },
+  {
+    "id": "wd:db:/job/India-Pune-Offsite/Privileged-Access-Management--PAM--Business-Requirements-and-Product-Ownership-Support--VP_R0425463",
+    "company": "Deutsche Bank",
+    "source": "workday",
+    "title": "Privileged Access Management (PAM) Business Requirements and Product Ownership Support, VP",
+    "location": "India, Pune, Offsite",
+    "url": "https://db.wd3.myworkdayjobs.com/DBWebsite/job/India-Pune-Offsite/Privileged-Access-Management--PAM--Business-Requirements-and-Product-Ownership-Support--VP_R0425463",
+    "updated": "Posted 17 Days Ago",
+    "desc": ""
+  },
+  {
+    "id": "wd:gehc:/job/IND36-01-Bengaluru-Kalyani-Platina-Magnolia/Product-Manager--IB-Upgrade---South-India_R4040925-1",
+    "company": "GE HealthCare",
+    "source": "workday",
+    "title": "Product Manager, IB Upgrade - South India",
+    "location": "IND36-01-Bengaluru-Kalyani Platina, Magnolia",
+    "url": "https://gehc.wd5.myworkdayjobs.com/GEHC_ExternalSite/job/IND36-01-Bengaluru-Kalyani-Platina-Magnolia/Product-Manager--IB-Upgrade---South-India_R4040925-1",
+    "updated": "Posted 30+ Days Ago",
+    "desc": ""
+  },
+  {
+    "id": "wd:gehc:/job/IND19-01-Bengaluru-EPIP-122-Phase-II/Senior-Staff-Technical-Product-Owner_R4037413",
+    "company": "GE HealthCare",
+    "source": "workday",
+    "title": "Senior Staff Technical Product Owner",
+    "location": "IND19-01-Bengaluru-EPIP 122 (Phase II)",
+    "url": "https://gehc.wd5.myworkdayjobs.com/GEHC_ExternalSite/job/IND19-01-Bengaluru-EPIP-122-Phase-II/Senior-Staff-Technical-Product-Owner_R4037413",
+    "updated": "Posted 30+ Days Ago",
+    "desc": ""
+  },
+  {
+    "id": "wd:philips:/job/Bangalore/AI-Product-Owner_583735",
+    "company": "Philips",
+    "source": "workday",
+    "title": "AI Product Owner",
+    "location": "Bangalore",
+    "url": "https://philips.wd3.myworkdayjobs.com/jobs-and-careers/job/Bangalore/AI-Product-Owner_583735",
+    "updated": "Posted 2 Days Ago",
+    "desc": ""
+  },
+  {
+    "id": "wd:philips:/job/Bangalore/Director---Head-of-Product-Management---Intelligent-Systems---AI_569898",
+    "company": "Philips",
+    "source": "workday",
+    "title": "Product Manager - Commercial Platform",
+    "location": "Bangalore",
+    "url": "https://philips.wd3.myworkdayjobs.com/jobs-and-careers/job/Bangalore/Director---Head-of-Product-Management---Intelligent-Systems---AI_569898",
+    "updated": "Posted 2 Days Ago",
+    "desc": ""
+  },
+  {
+    "id": "wd:gsk:/job/Bengaluru-Luxor-North-Tower/Senior-Product-Owner---Veeva-QMS_442099",
+    "company": "GSK",
+    "source": "workday",
+    "title": "Senior Product Owner - Veeva QMS",
+    "location": "Bengaluru Luxor North Tower",
+    "url": "https://gsk.wd5.myworkdayjobs.com/GSKCareers/job/Bengaluru-Luxor-North-Tower/Senior-Product-Owner---Veeva-QMS_442099",
+    "updated": "Posted 4 Days Ago",
+    "desc": ""
+  },
+  {
+    "id": "gh:mongodb:7922824",
+    "company": "MongoDB",
+    "source": "greenhouse",
+    "title": "Staff Product Manager",
+    "location": "India",
+    "url": "https://www.mongodb.com/careers/job/?gh_jid=7922824",
+    "updated": "2026-06-18T15:34:16-04:00",
+    "desc": "<p>We are looking for a Staff Product Manager to own and drive our Platform — the foundational infrastructure layer powering our Application Modernization Platform (AMP). This is a high-impact, technically demanding product leadership role that sits at the intersection of platform engineering, cloud infrastructure, and next-generation AI.</p> <p>You will be responsible for standing up the platform from the ground up — or significantly evolving an existing foundation — covering service hosting, API gateways, identity and access management, observability stacks, telemetry pipelines, and error-logging frameworks.</p> <p>The ideal candidate has walked in the shoes of an SRE, built or scaled a SaaS or application modernization platform, or served as a product manager for platform, infrastructure, or DevOps products at a leading enterprise technology company.</p> <p>We are looking to speak to candidates who are based in Gurugram for our hybrid working model.</p> <h3>What you'll own</h3> <ul> <li>Define and execute the strategy for compute and hosting infrastructure, including container orchestration, multi‑region deployments, API gateway capabilities, and service mesh adoption</li> <li>Own IAM for human and machine identities, implementing industry‑standard protocols and scalable authorization models (RBAC, ABAC) to secure multi‑tenant SaaS environments</li> <li>Lead the observability strategy across metrics, tracing, and logging, set and monitor reliability targets, and deliver insights to improve incident response, platform reliability, and capacity planning</li> <li>Own the vision and roadmap for the external AMP Dashboard, providing customers with actionable insights, analytics, and tools to manage and track modernization projects end‑to‑end through an intuitive, enterprise‑grade interface</li> <li>Champion developer productivity and adoption by delivering self‑service, well‑documented platform capabilities, tracking key performance metrics, and acting on feedback to drive continuous improvement</li> <li>Serve as the product bridge between engineering, security, and product teams, influencing technical and strategic decisions, managing vendor evaluations, and communicating progress and vision to senior leadership</li> </ul> <h3>What you'll bring</h3> <ul> <li>8+ years of overall professional experience; 4+ years in a product management role focused on platform, infrastructure, observability, or SRE domains</li> <li>Deep technical fluency in cloud infrastructure (AWS, GCP, or Azure), containerization (Docker, Kubernetes), and CI/CD pipelines</li> <li>Hands-on familiarity with API gateway configuration, service mesh patterns, and microservices architecture</li> <li>Working knowledge of authentication protocols (OAuth 2.0, OIDC, SAML) and authorization models (RBAC, ABAC)</li> <li>Experience with at least one full observability stack: metrics collection, distributed tracing, and centralized log management</li> <li>Proven ability to define and track reliability metrics (SLIs/SLOs/error budgets) and drive engineering teams toward measurable reliability goals</li> <li>Strong written and verbal communication skills — can translate complex infrastructure concepts for both technical and executive audiences</li> <li>Comfortable operating in high ambiguity; able to define product scope and priorities with incomplete information</li> </ul> <h3>Bonus Points</h3> <ul> <li>Prior experience evaluating or deploying LLM orchestration layers or AI/ML platform tooling</li> <li>Familiarity with AI observability tooling</li> <li>Experience with multi-agent system design patterns (tool use, memory, planning loops, guardrails)</li> <li>Background at a company with an India engineering hub — experience working within a globally distributed engineering organization is a strong plus</li> </ul> <h3>About MongoDB</h3> <p>MongoDB is built for change, empowering our customers and our people to innovate at the speed of the market. We have redefined the data pl"
+  },
+  {
+    "id": "gh:stripe:7625842",
+    "company": "Stripe",
+    "source": "greenhouse",
+    "title": "Product Manager, Risk & Compliance",
+    "location": "Bengaluru",
+    "url": "https://stripe.com/jobs/search?gh_jid=7625842",
+    "updated": "2026-06-26T17:05:32-04:00",
+    "desc": "<h2>Who we are</h2> <h3>About Stripe</h3> <p>Stripe is a financial infrastructure platform for businesses. Millions of companies - from the world's largest enterprises to the most ambitious startups - use Stripe to accept payments, grow their revenue, and accelerate new business opportunities. Our mission is to increase the GDP of the internet, and we have a staggering amount of work ahead. That means you have an unprecedented opportunity to put the global economy within everyone's reach while doing the most important work of your career.</p> <h3>About the team</h3> <p>Verification and Identity Platform (VIP) team is a core platform team that powers user onboarding and verification (KYC and KYB) worldwide and ensures continued compliance throughout the merchant lifecycle at Stripe. Our team safeguards user identities across our array of digital services, designing and executing a secure, effortless, and user-centered identity collection and verification environment. Our efforts cover a broad spectrum of identity-confirming scenarios, including identity proofing, risk-based, and adaptive verification technology. We provide an in-house smart orchestration ecosystem that allows us to integrate with multiple third-party data verification services, financial institutions, and regulatory bodies to build accuracy, reliability, and speed to verify accounts and businesses. We enable continued compliance at Stripe in an ever-evolving regulatory landscape by providing infrastructure that automates document collection, verification, and merchant communication for high-scale requirements refresh and accounts remediation programs.</p> <h2>What you'll do</h2> <p>In this role, you'll own the end-to-end strategy for how Stripe manages risk user experiences after onboarding. You'll define the journeys that allow millions of businesses to meet regulatory requirements—without losing sight of the user at every step.</p> <p>You'll work across engineering, design, and go-to-market to build verification and compliance infrastructure at global scale. Your decisions will directly influence how Stripe adapts to a fast-moving regulatory landscape and keeps users on track across their entire lifecycle with Stripe.</p> <h3>Responsibilities</h3> <ul> <li>Define the strategy and roadmap for all risk user experiences post-onboarding&nbsp;</li> <li>Drive collaboration across Stripe and external partners to deliver delightful, high-performing end-to-end risk journeys</li> <li>Act as the voice of the user in product and API designs, gathering direct feedback from customers and internal stakeholders</li> <li>Work with engineering, design, and go-to-market teams on designing a personalized and scalable onboarding experience</li> <li>Partner with legal, compliance, and policy teams to translate regulatory requirements into product solutions that scale across global markets</li> </ul> <h2>Who you are</h2> <p>We're looking for someone who meets the minimum requirements to be considered for the role. If you meet these requirements, you are encouraged to apply. The preferred qualifications are a bonus, not a requirement.</p> <h3>Minimum requirements</h3> <ul> <li>10+ years in Product Management, specifically in delivering excellent user experiences for complex and technical products.</li> <li>Experience managing technical software products from kick-off to ship</li> <li>Consistent track record of leading ambitious and ambiguous 0-to-1 projects</li> <li>Strong stakeholder management including navigating difficult situations, negotiating timelines, and influencing internal and external stakeholders across organizations and borders</li> <li>Strong communication skills—you can summarize and express complex requirements in an accessible and precise manner</li> </ul> <h3>Preferred qualifications</h3> <ul> <li>Experience in the B2B SaaS industry&nbsp;</li> <li>Familiarity with compliance and financial services regulation</li> <li>Track record of working on growth-focused team"
+  },
+  {
+    "id": "gh:stripe:7570242",
+    "company": "Stripe",
+    "source": "greenhouse",
+    "title": "Staff Product Manager, Global Expansion",
+    "location": "Bengaluru",
+    "url": "https://stripe.com/jobs/search?gh_jid=7570242",
+    "updated": "2026-06-26T17:05:31-04:00",
+    "desc": "<h2>Who we are</h2> <h3>About Stripe</h3> <p><span style=\"font-weight: 400;\">Stripe is a financial infrastructure platform for businesses. Millions of companies—from the world’s largest enterprises to the most ambitious startups—use Stripe to accept payments, grow their revenue, and accelerate new business opportunities. Our mission is to increase the GDP of the internet, and we have a staggering amount of work ahead. That means you have an unprecedented opportunity to put the global economy within everyone’s reach while doing the most important work of your career.</span></p> <h2>What you’ll do</h2> <p>We’re hiring a Product Manager to lead Stripe’s India business strategy and product roadmap. We are seeking a highly entrepreneurial, data-driven product leader who will own growth, go-to-market, and product execution for India. You will shape how Stripe serves India’s rapidly evolving digital economy - from domestic merchants and platforms to ambitious Indian companies scaling globally - and move quickly to capture significant market opportunities.</p> <p>India is one of the fastest-growing markets in the world: vast consumer demand, rapid merchant digitization, and a vibrant startup ecosystem. At the same time, Indian businesses are increasingly global - building products and services that sell across borders. This role sits at the intersection of domestic market expansion and global enablement: you’ll build products and commercial plays that unlock revenue across India and empower Indian companies to reach customers worldwide. The impact you drive will influence Stripe’s position in an increasingly strategic market.</p> <h3>Responsibilities</h3> <ul> <li>Own the India product strategy and roadmap end-to-end: define vision, prioritize initiatives, and measure outcomes tied to growth, revenue, and merchant satisfaction.</li> <li>Lead cross-functional teams (engineering, design, data science, ops, legal/compliance, sales, partnerships) to deliver product features, integrations, and commercial programs tailored to India.</li> <li>Move quickly from insight to experiment: design and run rapid experiments, launch localized features and pricing, and iterate based on quantitative and qualitative feedback.</li> <li>Deeply understand Indian merchants, platforms, PSPs, gateways, regulators and payment rails; translate market dynamics into product differentiation and commercial opportunity.</li> <li>Build products and flows that make it simpler for Indian businesses to sell globally — cross-border routing, FX and reconciliation, compliance, payout rails, and developer experience improvements.</li> <li>Partner with partnerships and business development teams to secure and scale strategic distribution and platform integrations.</li> <li>Represent the product and market perspective to regional and global stakeholders; provide clear decision-making and trade-off rationale.</li> </ul> <h2><strong>Who you are</strong></h2> <p><span style=\"font-weight: 400;\">We’re looking for someone who meets the minimum requirements to be considered for the role. If you meet these requirements, you are encouraged to apply. The preferred qualifications are a bonus, not a requirement.</span></p> <h3>Minimum requirements</h3> <ul> <li>Demonstrated product leadership in payments, fintech, marketplaces, or developer platform products, with 12+ years of experience in product management or equivalent roles.</li> <li>Deep knowledge of the Indian payments and commerce ecosystem: local payment methods, banks, regulatory landscape.</li> <li>Track record of shipping localized products and scaling go-to-market plays in India (or similar complex emerging markets).</li> <li>Strong analytical instincts: experience running experiments, using metrics to drive decisions.</li> <li>Comfortable with ambiguity and skilled at prioritizing high-impact initiatives while moving quickly and iterating.</li> <li>Excellent communicator and collaborator who can influence across engineering,"
+  }
+]
