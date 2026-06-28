@@ -291,6 +291,9 @@ else:
                     base = RESUMES[clicked_profile]
                     out = generate_resume(base, job, job.get("_missing", []),
                                           profile=clicked_profile)
+                    # generate_resume now returns {"resume": ..., "gaps": ...}
+                    if isinstance(out, str):
+                        out = {"resume": out, "gaps": ""}
                     st.session_state[f"resume::{job['id']}::{clicked_profile}"] = out
                     st.session_state[f"resume_last::{job['id']}"] = clicked_profile
                 except Exception as e:
@@ -299,17 +302,20 @@ else:
         last = st.session_state.get(f"resume_last::{job['id']}")
         saved = st.session_state.get(f"resume::{job['id']}::{last}") if last else None
         if saved:
+            resume_md = saved["resume"]
+            gaps_md   = saved.get("gaps", "")
+
             st.markdown(f"**Tailored resume — {last} profile.** Review before using; "
                         "it only reorders/rephrases what's in the base resume.")
-            st.text_area("Result", saved, height=400)
+            st.text_area("Result", resume_md, height=400)
             base_name = (f"resume_{last.replace(' ','')}_{job['company']}"
                          .replace(" ", "_").replace("&", "and").replace("/", "-"))
             d1, d2, d3 = st.columns(3)
-            d1.download_button("⬇️ Markdown", saved, file_name=base_name + ".md",
+            d1.download_button("⬇️ Markdown", resume_md, file_name=base_name + ".md",
                                use_container_width=True)
             try:
                 from export import md_to_pdf_bytes
-                d2.download_button("⬇️ PDF", md_to_pdf_bytes(saved),
+                d2.download_button("⬇️ PDF", md_to_pdf_bytes(resume_md),
                                    file_name=base_name + ".pdf", mime="application/pdf",
                                    use_container_width=True)
             except Exception:
@@ -317,11 +323,19 @@ else:
             try:
                 from export import md_to_docx_bytes
                 d3.download_button(
-                    "⬇️ Word", md_to_docx_bytes(saved), file_name=base_name + ".docx",
+                    "⬇️ Word", md_to_docx_bytes(resume_md), file_name=base_name + ".docx",
                     mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
                     use_container_width=True)
             except Exception:
                 d3.caption("DOCX needs `python-docx`")
+
+            # Coaching panel — visible to YOU, never goes into the downloaded resume.
+            if gaps_md:
+                with st.expander("💡 Before you apply — gap analysis (NOT in the downloaded resume)",
+                                 expanded=True):
+                    st.markdown(gaps_md)
+                    st.caption("This is private coaching guidance — it's deliberately excluded "
+                               "from the resume file you submit.")
 
 if st.session_state.get("errors"):
     with st.expander(f"⚠️ {len(st.session_state['errors'])} source errors"):

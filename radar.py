@@ -119,19 +119,188 @@ def fetch_ashby(c):
         }
 
 
+# ---- ATS auto-discovery (Workday + Eightfold) ----------------------------
+# Resolves the right shard/site (Workday) or host (Eightfold) on first use by
+# probing common patterns. Caches hits and misses in data/ats_cache.json so
+# subsequent runs go straight to the working URL with no extra calls. Misses
+# expire after 24h so renamed/moved tenants get a second chance.
+import time
+
+CACHE_PATH = "data/ats_cache.json"
+MISS_TTL_SEC = 24 * 3600  # 1 day before retrying a "doesn't exist" tenant
+
+WD_SHARDS = ["wd1", "wd2", "wd3", "wd5", "wd6", "wd10", "wd12", "wd101", "wd103"]
+WD_SITE_TEMPLATES = [
+    "External", "external", "Careers", "External_Career_Site", "External_Careers",
+    "ExternalCareerSite", "{T}_External_Careers", "{T}ExternalCareerSite",
+    "{T}_Careers", "{T}careers", "{T}Careers", "{t}careers", "global-careers",
+    "Global_Careers",
+]
+EF_HOST_TEMPLATES = [
+    "{c}.eightfold.ai",
+    "{c2}.eightfold.ai",     # underscore-stripped variant ("dsm-firmenich" -> "dsmfirmenich")
+    "careers.{c}.com",
+]
+
+
+def _cache_load(base):
+    return load_json(pathlib.Path(base) / CACHE_PATH, {})
+
+
+def _cache_save(base, cache):
+    save_json(pathlib.Path(base) / CACHE_PATH, cache)
+
+
+def _cache_get(cache, key):
+    e = cache.get(key)
+    if not e:
+        return None
+    if e.get("ok"):
+        return e            # always trust hits (use forever; revalidate manually if needed)
+    if time.time() - e.get("ts", 0) > MISS_TTL_SEC:
+        return None         # expired miss -> retry discovery
+    return e
+
+
+def _wd_probe(tenant, wd, site):
+    """One probe: returns (ok, host, error_or_None)."""
+    host = f"https://{tenant}.{wd}.myworkdayjobs.com"
+    url = f"{host}/wday/cxs/{tenant}/{site}/jobs"
+    try:
+        r = requests.post(url, json={"appliedFacets": {}, "limit": 1, "offset": 0, "searchText": ""},
+                          headers={**BROWSER_UA, "Content-Type": "application/json"}, timeout=10)
+        if r.status_code == 200:
+            return True, host, None
+        return False, host, f"HTTP {r.status_code}"
+    except requests.exceptions.RequestException as e:
+        return False, host, str(e)[:60]
+
+
+def discover_workday(tenant, hint_wd=None, hint_site=None, cache=None):
+    """Return {'wd':..., 'site':...} or None. Tries hints first, then a small grid."""
+    key = f"workday:{tenant}"
+    if cache is not None:
+        cached = _cache_get(cache, key)
+        if cached:
+            return cached.get("config") if cached.get("ok") else None
+
+    sites = []
+    for tpl in WD_SITE_TEMPLATES:
+        s = tpl.replace("{T}", tenant.capitalize()).replace("{t}", tenant.lower())
+        if s not in sites:
+            sites.append(s)
+    if hint_site and hint_site not in sites:
+        sites.insert(0, hint_site)
+
+    shards = list(WD_SHARDS)
+    if hint_wd and hint_wd in shards:
+        shards.remove(hint_wd)
+    if hint_wd:
+        shards.insert(0, hint_wd)
+
+    # Shard-first: pick a likely site, find the right shard quickly.
+    seed_site = hint_site or "External"
+    live_shard = None
+    for wd in shards:
+        ok, _, _ = _wd_probe(tenant, wd, seed_site)
+        if ok:
+            live_shard = wd
+            cfg = {"wd": wd, "site": seed_site}
+            if cache is not None:
+                cache[key] = {"ok": True, "ts": time.time(), "config": cfg}
+            return cfg
+        # detect "shard reachable but site wrong" -> 404/422 means right shard, wrong site
+        r_url = f"https://{tenant}.{wd}.myworkdayjobs.com/wday/cxs/{tenant}/{seed_site}/jobs"
+        try:
+            r = requests.post(r_url, json={"appliedFacets": {}, "limit": 1, "offset": 0, "searchText": ""},
+                              headers={**BROWSER_UA, "Content-Type": "application/json"}, timeout=8)
+            if r.status_code in (404, 422):
+                live_shard = wd
+                break
+        except requests.exceptions.RequestException:
+            continue
+
+    if live_shard:
+        for s in sites:
+            if s == seed_site:
+                continue
+            ok, _, _ = _wd_probe(tenant, live_shard, s)
+            if ok:
+                cfg = {"wd": live_shard, "site": s}
+                if cache is not None:
+                    cache[key] = {"ok": True, "ts": time.time(), "config": cfg}
+                return cfg
+
+    if cache is not None:
+        cache[key] = {"ok": False, "ts": time.time()}
+    return None
+
+
+def discover_eightfold(company, hint_domain=None, cache=None):
+    """Return {'host':..., 'domain':...} or None."""
+    key = f"eightfold:{company}"
+    if cache is not None:
+        cached = _cache_get(cache, key)
+        if cached:
+            return cached.get("config") if cached.get("ok") else None
+
+    c2 = company.replace("-", "").replace("_", "")
+    candidates = []
+    for tpl in EF_HOST_TEMPLATES:
+        h = tpl.replace("{c}", company).replace("{c2}", c2)
+        if h not in candidates:
+            candidates.append(h)
+
+    domain = hint_domain or f"{company}.com"
+    for host in candidates:
+        url = f"https://{host}/api/apply/v2/jobs"
+        try:
+            r = requests.get(url, params={"domain": domain, "hl": "en", "start": 0, "num": 1},
+                             headers={"Accept": "application/json"}, timeout=10)
+            if r.status_code == 200 and isinstance(r.json(), dict) and "positions" in r.json():
+                cfg = {"host": host, "domain": domain}
+                if cache is not None:
+                    cache[key] = {"ok": True, "ts": time.time(), "config": cfg}
+                return cfg
+        except requests.exceptions.RequestException:
+            continue
+
+    if cache is not None:
+        cache[key] = {"ok": False, "ts": time.time()}
+    return None
+
+
 def fetch_workday(c):
-    # tenant / wd / site all come straight from the company's careers URL, e.g.
-    # https://freseniusmedicalcare.wd3.myworkdayjobs.com/fme
-    #          tenant ^^^^^^^^^^^^^^^^^^^^   wd ^^^   site ^^^
-    host = f"https://{c['tenant']}.{c['wd']}.myworkdayjobs.com"
-    cxs  = f"{host}/wday/cxs/{c['tenant']}/{c['site']}/jobs"
+    # If wd/site are missing OR known-bad, discover them.
+    tenant = c["tenant"]
+    cache = c.get("_cache")
+    wd, site = c.get("wd"), c.get("site")
+    if not (wd and site):
+        cfg = discover_workday(tenant, hint_wd=wd, hint_site=site, cache=cache)
+        if not cfg:
+            raise RuntimeError(f"workday: tenant '{tenant}' not found on any common shard/site")
+        wd, site = cfg["wd"], cfg["site"]
+    host = f"https://{tenant}.{wd}.myworkdayjobs.com"
+    cxs  = f"{host}/wday/cxs/{tenant}/{site}/jobs"
     offset, limit, total = 0, 20, None
+    tried_discovery = (wd, site) != (c.get("wd"), c.get("site"))
     while True:
         r = requests.post(cxs,
                           json={"appliedFacets": {}, "limit": limit,
                                 "offset": offset, "searchText": ""},
                           headers={**BROWSER_UA, "Content-Type": "application/json"},
                           timeout=30)
+        # If the user's hardcoded wd/site is wrong (404/422 on first request), discover once.
+        if r.status_code in (404, 422) and offset == 0 and not tried_discovery:
+            cfg = discover_workday(tenant, hint_wd=wd, hint_site=site, cache=cache)
+            if not cfg:
+                raise RuntimeError(f"workday: tenant '{tenant}' not found "
+                                   f"(tried {wd}/{site} and common alternatives)")
+            wd, site = cfg["wd"], cfg["site"]
+            host = f"https://{tenant}.{wd}.myworkdayjobs.com"
+            cxs  = f"{host}/wday/cxs/{tenant}/{site}/jobs"
+            tried_discovery = True
+            continue
         r.raise_for_status()
         data = r.json()
         postings = data.get("jobPostings", [])
@@ -139,11 +308,11 @@ def fetch_workday(c):
         for j in postings:
             path = j.get("externalPath", "")
             yield {
-                "id": f"wd:{c['tenant']}:{path}",
-                "company": c.get("name", c["tenant"]), "source": "workday",
+                "id": f"wd:{tenant}:{path}",
+                "company": c.get("name", tenant), "source": "workday",
                 "title": j.get("title", ""),
                 "location": j.get("locationsText", ""),
-                "url": f"{host}/{c['site']}{path}",
+                "url": f"{host}/{site}{path}",
                 "updated": j.get("postedOn", ""),
                 "desc": "",  # Workday listing has no description; match falls back to title
             }
@@ -228,16 +397,24 @@ def fetch_jsearch(c):
 
 def fetch_eightfold(c):
     # Eightfold-powered career sites expose a public "SmartApply" feed, no auth.
-    # company + domain come from the careers URL, e.g. aexp.eightfold.ai -> company="aexp",
-    # domain="aexp.com". (A few tenants use the newer "PCSX" API instead — if a company
-    # returns nothing here, that's why; route those via the Apify Eightfold actor.)
+    # If the user-provided company subdomain doesn't resolve, discover() tries
+    # common variants (dashes-stripped, careers.<company>.com). Some tenants use
+    # the newer "PCSX" API which this fetcher doesn't speak — those will fall
+    # through to "not found" cleanly via the cache.
     company = c["company"]
-    domain  = c.get("domain", f"{company}.com")
-    base    = f"https://{company}.eightfold.ai"
+    cache = c.get("_cache")
+    hint_domain = c.get("domain")
+    cfg = discover_eightfold(company, hint_domain=hint_domain, cache=cache)
+    if not cfg:
+        raise RuntimeError(f"eightfold: company '{company}' not reachable on any "
+                           f"known host pattern")
+    host   = cfg["host"]
+    domain = cfg["domain"]
+    base   = f"https://{host}"
     start, num = 0, 100
     while True:
         params = {"domain": domain, "hl": "en", "start": start, "num": num}
-        r = requests.get(EIGHTFOLD.format(company=company), params=params,
+        r = requests.get(f"{base}/api/apply/v2/jobs", params=params,
                          headers={"Accept": "application/json"}, timeout=30)
         r.raise_for_status()
         data = r.json()
@@ -308,18 +485,38 @@ def run_radar(companies, title_regex=DEFAULT_TITLE, loc_regex=DEFAULT_LOC,
     seen = set(load_json(seen_path, [])) if persist else set()
 
     matches, errors = [], []
+    cache = _cache_load(state_dir)
+    cache_before = json.dumps(cache, sort_keys=True)
+
     for c in companies:
         fn = FETCHERS.get(c.get("ats"))
         if not fn:
             errors.append(f"unknown ats: {c}")
             continue
+        c = dict(c, _cache=cache)  # pass cache into the fetcher non-destructively
         try:
             for job in fn(c):
                 if title_pat.search(job["title"] or "") and loc_pat.search(job["location"] or ""):
                     matches.append(job)
+        except requests.exceptions.HTTPError as e:
+            code = e.response.status_code if e.response is not None else 0
+            who = c.get("slug") or c.get("tenant") or c.get("company") or "?"
+            # Real, actionable problems only: server errors, rate limits, auth.
+            if code in (401, 403, 429) or code >= 500:
+                errors.append(f"{c.get('ats')}:{who} -> HTTP {code}")
+            # 404/422 = wrong slug/tenant — discovery already tried; quietly skip.
+        except requests.exceptions.ConnectionError:
+            pass  # host doesn't exist; discovery cached the miss
         except Exception as e:
-            who = c.get("slug") or c.get("tenant") or "?"
-            errors.append(f"{c.get('ats')}:{who} -> {e}")
+            who = c.get("slug") or c.get("tenant") or c.get("company") or "?"
+            msg = str(e)
+            # Suppress "not reachable/not found" from discovery — those are cached.
+            if "not reachable" in msg or "not found" in msg:
+                continue
+            errors.append(f"{c.get('ats')}:{who} -> {msg}")
+
+    if json.dumps(cache, sort_keys=True) != cache_before:
+        _cache_save(state_dir, cache)
 
     new = [j for j in matches if j["id"] not in seen]
 
