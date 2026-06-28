@@ -1,10 +1,31 @@
 [
   {
     "ats": "jsearch",
-    "query": "senior product manager OR AI product manager OR product manager OR product owner in Bengaluru, India",
+    "query": "product manager OR product owner in Bengaluru, India",
     "country": "in",
     "date_posted": "3days",
     "name": "Boards via Google-for-Jobs (LinkedIn/Indeed/Glassdoor/Naukri)"
+  },
+  {
+    "ats": "workday",
+    "tenant": "fresenius",
+    "wd": "wd3",
+    "site": "FSE",
+    "name": "Fresenius Group"
+  },
+  {
+    "ats": "workday",
+    "tenant": "freseniusmedicalcare",
+    "wd": "wd1",
+    "site": "FMC_External",
+    "name": "Fresenius Medical Care"
+  },
+  {
+    "ats": "eightfold",
+    "tenant": "dsm-firmenich",
+    "company": "dsmfirmenich",
+    "domain": "jobs.dsm-firmenich.com",
+    "name": "DSM-Firmenich (incl. ANH NewCo)"
   },
   {
     "ats": "workday",
@@ -63,24 +84,407 @@
     "name": "WEX"
   },
   {
+    "ats": "workday",
+    "tenant": "nvidia",
+    "wd": "wd1",
+    "site": "NVIDIA_External_Career_Site",
+    "name": "NVIDIA"
+  },
+  {
+    "ats": "workday",
+    "tenant": "broadcom",
+    "wd": "wd1",
+    "site": "External_Career",
+    "name": "Broadcom"
+  },
+  {
+    "ats": "workday",
+    "tenant": "salesforce",
+    "wd": "wd1",
+    "site": "External_Career_Site",
+    "name": "Salesforce"
+  },
+  {
+    "ats": "workday",
+    "tenant": "dell",
+    "wd": "wd1",
+    "site": "External_Careers",
+    "name": "Dell Technologies"
+  },
+  {
+    "ats": "workday",
+    "tenant": "gsk",
+    "wd": "wd5",
+    "site": "GSKCareers",
+    "name": "GSK"
+  },
+  {
+    "ats": "workday",
+    "tenant": "target",
+    "wd": "wd1",
+    "site": "targetcareers",
+    "name": "Target Global Tech"
+  },
+  {
+    "ats": "workday",
+    "tenant": "aig",
+    "wd": "wd1",
+    "site": "aig",
+    "name": "AIG"
+  },
+  {
+    "ats": "workday",
+    "tenant": "terex",
+    "wd": "wd1",
+    "site": "terexcareers",
+    "name": "Terex"
+  },
+  {
+    "ats": "workday",
+    "tenant": "cisco",
+    "wd": "wd1",
+    "site": "Cisco_External_Careers",
+    "name": "Cisco Systems"
+  },
+  {
+    "ats": "workday",
+    "tenant": "walmart",
+    "wd": "wd1",
+    "site": "Walmart_External_Careers",
+    "name": "Walmart Global Tech"
+  },
+  {
+    "ats": "workday",
+    "tenant": "qualcomm",
+    "wd": "wd1",
+    "site": "Qualcomm_External_Careers",
+    "name": "Qualcomm"
+  },
+  {
+    "ats": "workday",
+    "tenant": "amd",
+    "wd": "wd1",
+    "site": "AMD_External_Careers",
+    "name": "AMD"
+  },
+  {
+    "ats": "workday",
+    "tenant": "paypal",
+    "wd": "wd1",
+    "site": "PayPal_External_Careers",
+    "name": "PayPal"
+  },
+  {
+    "ats": "workday",
+    "tenant": "servicenow",
+    "wd": "wd1",
+    "site": "ServiceNow_External_Careers",
+    "name": "ServiceNow"
+  },
+  {
+    "ats": "workday",
+    "tenant": "vmware",
+    "wd": "wd1",
+    "site": "VMware_External_Careers",
+    "name": "VMware"
+  },
+  {
+    "ats": "workday",
+    "tenant": "intuit",
+    "wd": "wd1",
+    "site": "Intuit_External_Careers",
+    "name": "Intuit"
+  },
+  {
+    "ats": "workday",
+    "tenant": "uber",
+    "wd": "wd1",
+    "site": "Uber_External_Careers",
+    "name": "Uber"
+  },
+  {
+    "ats": "workday",
+    "tenant": "ebay",
+    "wd": "wd1",
+    "site": "eBay_External_Careers",
+    "name": "eBay"
+  },
+  {
+    "ats": "workday",
+    "tenant": "schneider-electric",
+    "wd": "wd1",
+    "site": "Schneider-Electric_External_Careers",
+    "name": "Schneider Electric"
+  },
+  {
+    "ats": "workday",
+    "tenant": "siemens",
+    "wd": "wd1",
+    "site": "Siemens_External_Careers",
+    "name": "Siemens Technology"
+  },
+  {
+    "ats": "workday",
+    "tenant": "volkswagen",
+    "wd": "wd1",
+    "site": "VW_External_Careers",
+    "name": "Volkswagen Group GCC"
+  },
+  {
+    "ats": "workday",
+    "tenant": "astrazeneca",
+    "wd": "wd1",
+    "site": "AstraZeneca_External_Careers",
+    "name": "AstraZeneca India"
+  },
+  {
+    "ats": "workday",
+    "tenant": "asml",
+    "wd": "wd1",
+    "site": "ASML_External_Careers",
+    "name": "ASML"
+  },
+  {
     "ats": "greenhouse",
     "slug": "twilio",
+    "tenant": "twilio",
     "name": "Twilio"
   },
   {
     "ats": "greenhouse",
     "slug": "samsara",
+    "tenant": "samsara",
     "name": "Samsara"
   },
   {
     "ats": "greenhouse",
     "slug": "purestorage",
+    "tenant": "purestorage",
     "name": "Pure Storage"
+  },
+  {
+    "ats": "greenhouse",
+    "tenant": "anthropic",
+    "slug": "anthropic",
+    "name": "Anthropic"
+  },
+  {
+    "ats": "greenhouse",
+    "tenant": "hubspot",
+    "slug": "hubspot",
+    "name": "HubSpot"
+  },
+  {
+    "ats": "greenhouse",
+    "tenant": "mongodb",
+    "slug": "mongodb",
+    "name": "MongoDB"
+  },
+  {
+    "ats": "greenhouse",
+    "tenant": "doordash",
+    "slug": "doordash",
+    "name": "DoorDash"
+  },
+  {
+    "ats": "greenhouse",
+    "tenant": "github",
+    "slug": "github",
+    "name": "GitHub"
+  },
+  {
+    "ats": "greenhouse",
+    "tenant": "coinbase",
+    "slug": "coinbase",
+    "name": "Coinbase"
+  },
+  {
+    "ats": "greenhouse",
+    "tenant": "stripe",
+    "slug": "stripe",
+    "name": "Stripe"
+  },
+  {
+    "ats": "greenhouse",
+    "tenant": "airbnb",
+    "slug": "airbnb",
+    "name": "Airbnb"
+  },
+  {
+    "ats": "greenhouse",
+    "tenant": "figma",
+    "slug": "figma",
+    "name": "Figma"
+  },
+  {
+    "ats": "greenhouse",
+    "tenant": "snowflake",
+    "slug": "snowflake",
+    "name": "Snowflake"
+  },
+  {
+    "ats": "greenhouse",
+    "tenant": "datadog",
+    "slug": "datadog",
+    "name": "Datadog"
+  },
+  {
+    "ats": "greenhouse",
+    "tenant": "confluent",
+    "slug": "confluent",
+    "name": "Confluent"
+  },
+  {
+    "ats": "greenhouse",
+    "tenant": "cloudera",
+    "slug": "cloudera",
+    "name": "Cloudera"
+  },
+  {
+    "ats": "greenhouse",
+    "tenant": "elastic",
+    "slug": "elastic",
+    "name": "Elastic"
+  },
+  {
+    "ats": "greenhouse",
+    "tenant": "hashicorp",
+    "slug": "hashicorp",
+    "name": "HashiCorp"
+  },
+  {
+    "ats": "greenhouse",
+    "tenant": "postman",
+    "slug": "postman",
+    "name": "Postman"
   },
   {
     "ats": "eightfold",
     "company": "aexp",
+    "tenant": "aexp",
     "domain": "aexp.com",
     "name": "American Express"
+  },
+  {
+    "ats": "eightfold",
+    "tenant": "microsoft",
+    "company": "microsoft",
+    "domain": "://microsoft.com",
+    "name": "Microsoft"
+  },
+  {
+    "ats": "eightfold",
+    "tenant": "lamresearch",
+    "company": "lamresearch",
+    "domain": "lamresearch.eightfold.ai",
+    "name": "Lam Research"
+  },
+  {
+    "ats": "eightfold",
+    "tenant": "ericsson",
+    "company": "ericsson",
+    "domain": "ericsson.eightfold.ai",
+    "name": "Ericsson"
+  },
+  {
+    "ats": "eightfold",
+    "tenant": "bny-mellon",
+    "company": "bnymellon",
+    "domain": "bnymellon.eightfold.ai",
+    "name": "BNY Mellon"
+  },
+  {
+    "ats": "eightfold",
+    "tenant": "morgan-stanley",
+    "company": "morganstanley",
+    "domain": "morganstanley.eightfold.ai",
+    "name": "Morgan Stanley"
+  },
+  {
+    "ats": "eightfold",
+    "tenant": "chevron",
+    "company": "chevron",
+    "domain": "chevron.eightfold.ai",
+    "name": "Chevron"
+  },
+  {
+    "ats": "eightfold",
+    "tenant": "netapp",
+    "company": "netapp",
+    "domain": "netapp.eightfold.ai",
+    "name": "NetApp"
+  },
+  {
+    "ats": "eightfold",
+    "tenant": "micron",
+    "company": "micron",
+    "domain": "micron.eightfold.ai",
+    "name": "Micron Technology"
+  },
+  {
+    "ats": "eightfold",
+    "tenant": "sap",
+    "company": "sap",
+    "domain": "sap.eightfold.ai",
+    "name": "SAP Labs India"
+  },
+  {
+    "ats": "eightfold",
+    "tenant": "bosch",
+    "company": "bosch",
+    "domain": "bosch.eightfold.ai",
+    "name": "Bosch Global Software"
+  },
+  {
+    "ats": "eightfold",
+    "tenant": "mercedes-benz",
+    "company": "mercedesbenz",
+    "domain": "mercedesbenz.eightfold.ai",
+    "name": "Mercedes-Benz R&D India"
+  },
+  {
+    "ats": "eightfold",
+    "tenant": "abb",
+    "company": "abb",
+    "domain": "abb.eightfold.ai",
+    "name": "ABB India"
+  },
+  {
+    "ats": "eightfold",
+    "tenant": "roche",
+    "company": "roche",
+    "domain": "roche.eightfold.ai",
+    "name": "Roche India"
+  },
+  {
+    "ats": "eightfold",
+    "tenant": "novartis",
+    "company": "novartis",
+    "domain": "novartis.eightfold.ai",
+    "name": "Novartis India"
+  },
+  {
+    "ats": "lever",
+    "tenant": "netflix",
+    "slug": "netflix",
+    "name": "Netflix"
+  },
+  {
+    "ats": "lever",
+    "tenant": "atlassian",
+    "slug": "atlassian",
+    "name": "Atlassian"
+  },
+  {
+    "ats": "lever",
+    "tenant": "miro",
+    "slug": "miro",
+    "name": "Miro"
+  },
+  {
+    "ats": "lever",
+    "tenant": "palantir",
+    "slug": "palantir",
+    "name": "Palantir Technologies"
   }
 ]
