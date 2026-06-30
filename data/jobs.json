@@ -10,6 +10,16 @@
     "desc": ""
   },
   {
+    "id": "wd:adobe:/job/Bangalore/Senior-Product-Manager_R168580",
+    "company": "Adobe",
+    "source": "workday",
+    "title": "Senior Product Manager",
+    "location": "Bangalore",
+    "url": "https://adobe.wd5.myworkdayjobs.com/external_experienced/job/Bangalore/Senior-Product-Manager_R168580",
+    "updated": "Posted Today",
+    "desc": ""
+  },
+  {
     "id": "wd:adobe:/job/Bangalore/Product-Manager-3_R169439",
     "company": "Adobe",
     "source": "workday",
@@ -106,7 +116,7 @@
     "title": "Staff Product Manager",
     "location": "India",
     "url": "https://www.mongodb.com/careers/job/?gh_jid=7922824",
-    "updated": "2026-06-18T15:34:16-04:00",
+    "updated": "2026-06-30T14:01:40-04:00",
     "desc": "<p>We are looking for a Staff Product Manager to own and drive our Platform — the foundational infrastructure layer powering our Application Modernization Platform (AMP). This is a high-impact, technically demanding product leadership role that sits at the intersection of platform engineering, cloud infrastructure, and next-generation AI.</p> <p>You will be responsible for standing up the platform from the ground up — or significantly evolving an existing foundation — covering service hosting, API gateways, identity and access management, observability stacks, telemetry pipelines, and error-logging frameworks.</p> <p>The ideal candidate has walked in the shoes of an SRE, built or scaled a SaaS or application modernization platform, or served as a product manager for platform, infrastructure, or DevOps products at a leading enterprise technology company.</p> <p>We are looking to speak to candidates who are based in Gurugram for our hybrid working model.</p> <h3>What you'll own</h3> <ul> <li>Define and execute the strategy for compute and hosting infrastructure, including container orchestration, multi‑region deployments, API gateway capabilities, and service mesh adoption</li> <li>Own IAM for human and machine identities, implementing industry‑standard protocols and scalable authorization models (RBAC, ABAC) to secure multi‑tenant SaaS environments</li> <li>Lead the observability strategy across metrics, tracing, and logging, set and monitor reliability targets, and deliver insights to improve incident response, platform reliability, and capacity planning</li> <li>Own the vision and roadmap for the external AMP Dashboard, providing customers with actionable insights, analytics, and tools to manage and track modernization projects end‑to‑end through an intuitive, enterprise‑grade interface</li> <li>Champion developer productivity and adoption by delivering self‑service, well‑documented platform capabilities, tracking key performance metrics, and acting on feedback to drive continuous improvement</li> <li>Serve as the product bridge between engineering, security, and product teams, influencing technical and strategic decisions, managing vendor evaluations, and communicating progress and vision to senior leadership</li> </ul> <h3>What you'll bring</h3> <ul> <li>8+ years of overall professional experience; 4+ years in a product management role focused on platform, infrastructure, observability, or SRE domains</li> <li>Deep technical fluency in cloud infrastructure (AWS, GCP, or Azure), containerization (Docker, Kubernetes), and CI/CD pipelines</li> <li>Hands-on familiarity with API gateway configuration, service mesh patterns, and microservices architecture</li> <li>Working knowledge of authentication protocols (OAuth 2.0, OIDC, SAML) and authorization models (RBAC, ABAC)</li> <li>Experience with at least one full observability stack: metrics collection, distributed tracing, and centralized log management</li> <li>Proven ability to define and track reliability metrics (SLIs/SLOs/error budgets) and drive engineering teams toward measurable reliability goals</li> <li>Strong written and verbal communication skills — can translate complex infrastructure concepts for both technical and executive audiences</li> <li>Comfortable operating in high ambiguity; able to define product scope and priorities with incomplete information</li> </ul> <h3>Bonus Points</h3> <ul> <li>Prior experience evaluating or deploying LLM orchestration layers or AI/ML platform tooling</li> <li>Familiarity with AI observability tooling</li> <li>Experience with multi-agent system design patterns (tool use, memory, planning loops, guardrails)</li> <li>Background at a company with an India engineering hub — experience working within a globally distributed engineering organization is a strong plus</li> </ul> <h3>About MongoDB</h3> <p>MongoDB is built for change, empowering our customers and our people to innovate at the speed of the market. We have redefined the data pl"
   },
   {
