@@ -1,45 +1,5 @@
 [
   {
-    "id": "wd:adobe:/job/Bangalore/Senior-Product-Manager_R169376",
-    "company": "Adobe",
-    "source": "workday",
-    "title": "Senior Product Manager (Enterprise Platform)",
-    "location": "Bangalore",
-    "url": "https://adobe.wd5.myworkdayjobs.com/external_experienced/job/Bangalore/Senior-Product-Manager_R169376",
-    "updated": "Posted 30+ Days Ago",
-    "desc": ""
-  },
-  {
-    "id": "wd:db:/job/India-Pune-Offsite/Privileged-Access-Management--PAM--Business-Requirements-and-Product-Ownership-Support--VP_R0425463",
-    "company": "Deutsche Bank",
-    "source": "workday",
-    "title": "Privileged Access Management (PAM) Business Requirements and Product Ownership Support, VP",
-    "location": "India, Pune, Offsite",
-    "url": "https://db.wd3.myworkdayjobs.com/DBWebsite/job/India-Pune-Offsite/Privileged-Access-Management--PAM--Business-Requirements-and-Product-Ownership-Support--VP_R0425463",
-    "updated": "Posted 30+ Days Ago",
-    "desc": ""
-  },
-  {
-    "id": "wd:gehc:/job/IND36-01-Bengaluru-Kalyani-Platina-Magnolia/Product-Manager--IB-Upgrade---South-India_R4040925-1",
-    "company": "GE HealthCare",
-    "source": "workday",
-    "title": "Product Manager, IB Upgrade - South India",
-    "location": "IND36-01-Bengaluru-Kalyani Platina, Magnolia",
-    "url": "https://gehc.wd5.myworkdayjobs.com/GEHC_ExternalSite/job/IND36-01-Bengaluru-Kalyani-Platina-Magnolia/Product-Manager--IB-Upgrade---South-India_R4040925-1",
-    "updated": "Posted 30+ Days Ago",
-    "desc": ""
-  },
-  {
-    "id": "wd:broadcom:/job/IND-Bangalore-Kalyani-Vista-II/Product-Manager---ValueOps-Financial-Intelligence-Solution_R026454",
-    "company": "Broadcom",
-    "source": "workday",
-    "title": "Product Manager – ValueOps Financial Intelligence Solution",
-    "location": "IND-Bangalore-Kalyani Vista II",
-    "url": "https://broadcom.wd1.myworkdayjobs.com/External_Career/job/IND-Bangalore-Kalyani-Vista-II/Product-Manager---ValueOps-Financial-Intelligence-Solution_R026454",
-    "updated": "Posted 4 Days Ago",
-    "desc": ""
-  },
-  {
     "id": "gh:coinbase:8031208",
     "company": "Coinbase",
     "source": "greenhouse",
