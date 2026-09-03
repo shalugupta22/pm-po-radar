@@ -10,16 +10,6 @@
     "desc": ""
   },
   {
-    "id": "wd:autodesk:/job/Pune-IND/Product-Manager_26WD100734-1",
-    "company": "Autodesk",
-    "source": "workday",
-    "title": "Product Manager",
-    "location": "Pune, IND",
-    "url": "https://autodesk.wd1.myworkdayjobs.com/Ext/job/Pune-IND/Product-Manager_26WD100734-1",
-    "updated": "Posted Yesterday",
-    "desc": ""
-  },
-  {
     "id": "wd:autodesk:/job/Bengaluru-IND/Senior-Product-Manager_26WD99627-1",
     "company": "Autodesk",
     "source": "workday",
@@ -47,6 +37,16 @@
     "location": "IND36-01-Bengaluru-Kalyani Platina, Magnolia",
     "url": "https://gehc.wd5.myworkdayjobs.com/GEHC_ExternalSite/job/IND36-01-Bengaluru-Kalyani-Platina-Magnolia/Product-Manager--IB-Upgrade---South-India_R4040925-1",
     "updated": "Posted 30+ Days Ago",
+    "desc": ""
+  },
+  {
+    "id": "wd:philips:/job/Bangalore/Product-Manager-IGT-S_587766",
+    "company": "Philips",
+    "source": "workday",
+    "title": "Product Manager IGT-S",
+    "location": "Bangalore",
+    "url": "https://philips.wd3.myworkdayjobs.com/jobs-and-careers/job/Bangalore/Product-Manager-IGT-S_587766",
+    "updated": "Posted Today",
     "desc": ""
   },
   {
