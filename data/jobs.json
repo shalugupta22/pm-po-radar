@@ -1,15 +1,5 @@
 [
   {
-    "id": "wd:autodesk:/job/Bengaluru-IND/Senior-Product-Manager--GTM-Automation_26WD101350-2",
-    "company": "Autodesk",
-    "source": "workday",
-    "title": "Senior Product Manager, GTM Automation",
-    "location": "Bengaluru, IND",
-    "url": "https://autodesk.wd1.myworkdayjobs.com/Ext/job/Bengaluru-IND/Senior-Product-Manager--GTM-Automation_26WD101350-2",
-    "updated": "Posted 7 Days Ago",
-    "desc": ""
-  },
-  {
     "id": "wd:db:/job/Bangalore-Velankani-ISC/Senior-Business-and-Data-Analyst--AVP_R0424705",
     "company": "Deutsche Bank",
     "source": "workday",
@@ -70,6 +60,16 @@
     "desc": ""
   },
   {
+    "id": "wd:gsk:/job/Bengaluru-Luxor-North-Tower/SNOW---Data-Intelligence-Product-Owner_448647",
+    "company": "GSK",
+    "source": "workday",
+    "title": "Senior Principal - Data Intelligence Product Owner",
+    "location": "Bengaluru Luxor North Tower",
+    "url": "https://gsk.wd5.myworkdayjobs.com/GSKCareers/job/Bengaluru-Luxor-North-Tower/SNOW---Data-Intelligence-Product-Owner_448647",
+    "updated": "Posted Today",
+    "desc": ""
+  },
+  {
     "id": "wd:gsk:/job/Bengaluru-Luxor-North-Tower/Senior-Product-Manager---Historian-and-Visualisation_449074",
     "company": "GSK",
     "source": "workday",
@@ -96,16 +96,6 @@
     "title": "Senior Principal - Product Owner - EUC/MDM",
     "location": "Bengaluru Luxor North Tower",
     "url": "https://gsk.wd5.myworkdayjobs.com/GSKCareers/job/Bengaluru-Luxor-North-Tower/Senior-Principal---Product-Owner---EUC-MDM_449010-1",
-    "updated": "Posted Today",
-    "desc": ""
-  },
-  {
-    "id": "wd:gsk:/job/Bengaluru-Luxor-North-Tower/SNOW---Data-Intelligence-Product-Owner_448647",
-    "company": "GSK",
-    "source": "workday",
-    "title": "Senior Principal - Data Intelligence Product Owner",
-    "location": "Bengaluru Luxor North Tower",
-    "url": "https://gsk.wd5.myworkdayjobs.com/GSKCareers/job/Bengaluru-Luxor-North-Tower/SNOW---Data-Intelligence-Product-Owner_448647",
     "updated": "Posted Today",
     "desc": ""
   },
